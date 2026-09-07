@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motra — Essential Oils &amp; Botanical Extracts, Grown in Đồng Nai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F1E6;
+    --paper-deep:#EEE5D2;
+    --ink:#1C2A20;
+    --pine:#1F3A2E;
+    --pine-deep:#122019;
+    --brass:#B8863B;
+    --brass-light:#D6AC66;
+    --clay:#8A6A46;
+    --line:rgba(31,58,46,0.18);
+    --shadow: 0 18px 40px -22px rgba(18,32,25,0.45);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+
+  /* texture: fine linen grain */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:0.35;
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0 2px, rgba(31,58,46,0.015) 2px 3px),
+      repeating-linear-gradient(90deg, transparent 0 2px, rgba(31,58,46,0.012) 2px 3px);
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--pine-deep);
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass);
+    display:flex; align-items:center; gap:0.6em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--brass);
+    display:inline-block;
+  }
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+    position:relative;
+    z-index:1;
+  }
+  section{ position:relative; z-index:1; }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,241,230,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1180px; margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brandmark{ display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .brandmark svg{ width:30px; height:30px; }
+  .brandmark span{
+    font-family:'Fraunces', serif; font-size:1.25rem; letter-spacing:0.04em;
+    color:var(--pine-deep); font-weight:500;
+  }
+  nav.links{ display:flex; gap:34px; }
+  nav.links a{
+    font-size:0.86rem; text-decoration:none; color:var(--ink);
+    letter-spacing:0.02em;
+    position:relative; padding:4px 0;
+  }
+  nav.links a::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+    background:var(--brass); transform:scaleX(0); transform-origin:left;
+    transition:transform .25s ease;
+  }
+  nav.links a:hover::after{ transform:scaleX(1); }
+  .nav-cta{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.08em;
+    text-transform:uppercase; text-decoration:none;
+    border:1px solid var(--pine); color:var(--pine-deep);
+    padding:9px 16px; border-radius:2px;
+    transition:all .25s ease;
+  }
+  .nav-cta:hover{ background:var(--pine); color:var(--paper); }
+  .nav-mobile-hide{ display:flex; }
+  @media (max-width:860px){ .nav-mobile-hide{ display:none; } }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--pine-deep);
+    color:var(--paper);
+    padding:120px 0 0 0;
+    overflow:hidden;
+    position:relative;
+  }
+  .hero::before{
+    /* topographic contour texture */
+    content:"";
+    position:absolute; inset:0;
+    opacity:0.14;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cg fill='none' stroke='%23D6AC66' stroke-width='1'%3E%3Cellipse cx='120' cy='140' rx='90' ry='60'/%3E%3Cellipse cx='120' cy='140' rx='150' ry='105'/%3E%3Cellipse cx='120' cy='140' rx='210' ry='150'/%3E%3Cellipse cx='480' cy='420' rx='110' ry='75'/%3E%3Cellipse cx='480' cy='420' rx='175' ry='125'/%3E%3Cellipse cx='480' cy='420' rx='240' ry='175'/%3E%3C/g%3E%3C/svg%3E");
+    background-size:600px 600px;
+    background-repeat:repeat;
+    z-index:0;
+  }
+  .hero-inner{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+    position:relative; z-index:1;
+  }
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--brass-light);
+    margin-bottom:22px; display:flex; align-items:center; gap:10px;
+  }
+  .hero-eyebrow::before{ content:""; width:26px; height:1px; background:var(--brass-light); }
+  .hero h1{
+    color:var(--paper);
+    font-size:clamp(2.6rem, 5.2vw, 4.4rem);
+    line-height:1.04;
+    font-weight:500;
+  }
+  .hero h1 em{ font-style:italic; color:var(--brass-light); font-weight:400; }
+  .hero p.lede{
+    margin-top:26px; max-width:480px;
+    font-size:1.08rem; color:rgba(246,241,230,0.82);
+    font-weight:300;
+  }
+  .hero-actions{ display:flex; gap:16px; margin-top:38px; flex-wrap:wrap; }
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:0.76rem; letter-spacing:0.06em;
+    text-transform:uppercase; text-decoration:none; padding:15px 26px;
+    border-radius:2px; display:inline-block; transition:all .25s ease;
+    border:1px solid transparent;
+  }
+  .btn-brass{ background:var(--brass); color:var(--pine-deep); }
+  .btn-brass:hover{ background:var(--brass-light); }
+  .btn-ghost{ border-color:rgba(246,241,230,0.4); color:var(--paper); }
+  .btn-ghost:hover{ border-color:var(--paper); background:rgba(246,241,230,0.08); }
+
+  .hero-frame{
+    position:relative;
+    padding:14px;
+    background:rgba(246,241,230,0.05);
+    border:1px solid rgba(214,172,102,0.3);
+  }
+  .hero-frame img{ width:100%; height:auto; }
+  .hero-frame .cap{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--brass-light); margin-top:12px; text-align:center;
+  }
+
+  .hero-ribbon{
+    margin-top:80px;
+    border-top:1px solid rgba(214,172,102,0.22);
+    padding:22px 0;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:18px;
+    position:relative; z-index:1;
+  }
+  .hero-ribbon .item{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    color:rgba(246,241,230,0.62); letter-spacing:0.04em;
+  }
+  .hero-ribbon .item b{ color:var(--brass-light); font-weight:500; }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section-head{ max-width:640px; margin-bottom:52px; }
+  .section-head h2{ font-size:clamp(1.9rem,3.2vw,2.6rem); margin-top:14px; }
+  .section-head p{ margin-top:16px; color:var(--clay); font-size:1.02rem; max-width:560px; }
+
+  .section-pad{ padding:110px 0; }
+  .divider{ height:1px; background:var(--line); }
+
+  /* ---------- ESTATE / LEDGER ---------- */
+  .estate{ background:var(--paper); }
+  .estate-grid{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:start; }
+  .estate-copy p{ margin:0 0 18px; color:#3c4d40; font-size:1.02rem; }
+  .estate-copy p.drop::first-letter{
+    font-family:'Fraunces', serif; font-size:3.4rem; float:left; line-height:0.8;
+    padding:6px 8px 0 0; color:var(--brass); font-weight:500;
+  }
+
+  .ledger{
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    padding:36px 34px;
+    position:relative;
+  }
+  .ledger::before{
+    content:"THE LEDGER";
+    position:absolute; top:-11px; left:28px; background:var(--paper-deep);
+    padding:0 10px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.18em;
+    color:var(--brass);
+  }
+  .ledger-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:14px 0; border-bottom:1px dashed var(--line);
+    font-family:'IBM Plex Mono', monospace; font-size:0.86rem;
+  }
+  .ledger-row:last-child{ border-bottom:none; }
+  .ledger-row .val{ color:var(--pine-deep); font-weight:500; font-size:1.05rem; font-family:'Fraunces', serif; }
+  .ledger-row .lbl{ color:var(--clay); letter-spacing:0.02em; }
+
+  /* ---------- FOUNDER LETTER ---------- */
+  .letter-section{ background:var(--pine); color:var(--paper); }
+  .letter-section .section-head p{ color:rgba(246,241,230,0.72); }
+  .letter-section .eyebrow{ color:var(--brass-light); }
+  .letter-section .eyebrow::before{ background:var(--brass-light); }
+  .letter-grid{ display:grid; grid-template-columns:0.62fr 1fr; gap:64px; align-items:start; }
+  .monogram{
+    width:104px; height:104px; border-radius:50%;
+    border:1px solid rgba(214,172,102,0.55);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-style:italic; font-size:2.1rem;
+    color:var(--brass-light);
+    margin-bottom:26px;
+  }
+  .letter-meta{ font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:rgba(246,241,230,0.55); line-height:1.9; }
+  .letter-meta b{ color:var(--brass-light); font-weight:500; display:block; font-family:'Fraunces', serif; font-size:1.2rem; margin-bottom:2px;}
+  .letter-body p{ font-size:1.06rem; color:rgba(246,241,230,0.9); margin:0 0 20px; font-weight:300; }
+  .letter-body p:first-child::first-letter{
+    font-family:'Fraunces', serif; font-style:italic; font-size:3.8rem; float:left;
+    line-height:0.75; padding:8px 10px 0 0; color:var(--brass-light);
+  }
+  .sign-off{ margin-top:34px; font-family:'Fraunces', serif; font-style:italic; font-size:1.3rem; color:var(--brass-light); }
+  .sign-off small{ display:block; font-family:'IBM Plex Mono', monospace; font-style:normal; font-size:0.72rem; color:rgba(246,241,230,0.55); margin-top:6px; letter-spacing:0.05em;}
+
+  /* ---------- HERBARIUM ---------- */
+  .herbarium{ background:var(--paper); }
+  .specimen-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .specimen{
+    background:var(--paper);
+    padding:30px 26px 26px;
+    display:flex; flex-direction:column; gap:14px;
+    min-height:300px;
+    transition:background .3s ease;
+  }
+  .specimen:hover{ background:var(--paper-deep); }
+  .specimen .icon{ width:40px; height:40px; color:var(--pine); }
+  .specimen .icon svg{ width:100%; height:100%; }
+  .specimen .part{
+    font-family:'IBM Plex Mono', monospace; font-size:0.66rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--brass);
+  }
+  .specimen h3{ font-size:1.18rem; font-weight:500; line-height:1.25; }
+  .specimen .latin{ font-style:italic; font-family:'Fraunces', serif; color:var(--clay); font-size:0.92rem; margin-top:-8px; }
+  .specimen p{ font-size:0.88rem; color:#4a5a4d; margin:0; flex-grow:1; }
+  .specimen .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.66rem; letter-spacing:0.04em;
+    color:var(--pine); border-top:1px dashed var(--line); padding-top:12px; margin-top:auto;
+  }
+  .specimen .tag.verify{ color:var(--brass); font-weight:500; }
+  @media (max-width:980px){ .specimen-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .specimen-grid{ grid-template-columns:1fr; } }
+
+  .herb-note{
+    margin-top:26px; padding:18px 22px; border:1px dashed var(--line);
+    font-size:0.86rem; color:var(--clay); background:var(--paper-deep);
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process{ background:var(--paper-deep); }
+  .process-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); }
+  .process-col{ padding:48px 44px; }
+  .process-col + .process-col{ border-left:1px solid var(--line); }
+  .process-col .kicker{ font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--brass); }
+  .process-col h3{ font-size:1.5rem; margin-top:12px; margin-bottom:16px; }
+  .process-col p{ color:#3c4d40; font-size:0.96rem; }
+  .process-col ul{ margin:18px 0 0; padding:0; list-style:none; }
+  .process-col li{ font-size:0.92rem; color:#3c4d40; padding:10px 0; border-top:1px solid var(--line); display:flex; gap:10px; }
+  .process-col li:first-child{ border-top:none; }
+  .process-col li::before{ content:"·"; color:var(--brass); font-weight:700; }
+  @media (max-width:820px){ .process-grid{ grid-template-columns:1fr; } .process-col + .process-col{ border-left:none; border-top:1px solid var(--line); } }
+
+  /* ---------- CERTIFICATIONS ---------- */
+  .certs{ background:var(--pine-deep); color:var(--paper); }
+  .certs .section-head p{ color:rgba(246,241,230,0.68); }
+  .certs .eyebrow{ color:var(--brass-light); } .certs .eyebrow::before{ background:var(--brass-light); }
+  .seal-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(214,172,102,0.2); border:1px solid rgba(214,172,102,0.2); }
+  .seal{ background:var(--pine-deep); padding:40px 30px; text-align:center; }
+  .seal .ring{
+    width:76px; height:76px; margin:0 auto 20px; border-radius:50%;
+    border:1px solid var(--brass-light);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .seal .ring svg{ width:34px; height:34px; }
+  .seal h4{ color:var(--paper); font-size:1.1rem; font-weight:500; }
+  .seal p{ color:rgba(246,241,230,0.62); font-size:0.85rem; margin-top:8px; }
+  @media (max-width:820px){ .seal-row{ grid-template-columns:1fr; } }
+
+  .coa-strip{
+    margin-top:56px; border:1px solid rgba(214,172,102,0.25);
+    padding:26px 30px; font-family:'IBM Plex Mono', monospace; font-size:0.82rem;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+  }
+  .coa-strip .cell .k{ color:rgba(246,241,230,0.5); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; }
+  .coa-strip .cell .v{ color:var(--brass-light); margin-top:6px; font-size:0.95rem; }
+  .coa-cap{ font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:rgba(246,241,230,0.42); margin-top:14px; letter-spacing:0.03em;}
+  @media (max-width:760px){ .coa-strip{ grid-template-columns:1fr 1fr; } }
+
+  /* ---------- MARKETS / BULK & RETAIL ---------- */
+  .markets{ background:var(--paper); }
+  .market-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); }
+  .market-card{ background:var(--paper); padding:52px 46px; }
+  .market-card .eyebrow{ margin-bottom:18px; }
+  .market-card h3{ font-size:1.7rem; margin-bottom:14px; }
+  .market-card p{ color:#3c4d40; font-size:0.98rem; margin-bottom:26px; }
+  .market-card .btn-brass{ background:var(--pine); color:var(--paper); }
+  .market-card .btn-brass:hover{ background:var(--pine-deep); }
+  .market-card.alt .btn-brass{ background:var(--brass); color:var(--pine-deep); }
+  .market-card.alt .btn-brass:hover{ background:var(--brass-light); }
+  @media (max-width:820px){ .market-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ background:var(--paper-deep); }
+  .contact-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; }
+  .contact-info .row{ margin-bottom:28px; }
+  .contact-info .k{ font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--brass); margin-bottom:6px; }
+  .contact-info .v{ font-size:1.02rem; color:var(--pine-deep); font-family:'Fraunces', serif; }
+  form{ display:flex; flex-direction:column; gap:18px; }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  label{ font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--clay); margin-bottom:8px; display:block; }
+  input, select, textarea{
+    width:100%; background:var(--paper); border:1px solid var(--line); padding:13px 14px;
+    font-family:'Work Sans', sans-serif; font-size:0.94rem; color:var(--ink); border-radius:2px;
+  }
+  input:focus, select:focus, textarea:focus{ outline:2px solid var(--brass); outline-offset:1px; border-color:var(--brass); }
+  textarea{ resize:vertical; min-height:110px; }
+  .submit-btn{
+    align-self:flex-start; background:var(--pine); color:var(--paper); border:none;
+    font-family:'IBM Plex Mono', monospace; font-size:0.76rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:15px 30px; border-radius:2px; cursor:pointer; transition:background .25s ease;
+  }
+  .submit-btn:hover{ background:var(--pine-deep); }
+  @media (max-width:820px){ .contact-grid{ grid-template-columns:1fr; } .field-row{ grid-template-columns:1fr; } }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--pine-deep); color:rgba(246,241,230,0.6); padding:60px 0 30px; }
+  .footer-top{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px; padding-bottom:36px; border-bottom:1px solid rgba(214,172,102,0.18); }
+  .footer-brand{ display:flex; align-items:center; gap:12px; }
+  .footer-brand svg{ width:28px; height:28px; }
+  .footer-brand span{ font-family:'Fraunces', serif; color:var(--paper); font-size:1.15rem; }
+  .footer-links{ display:flex; gap:40px; flex-wrap:wrap; }
+  .footer-links div b{ display:block; color:var(--brass-light); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:500; margin-bottom:12px; font-family:'IBM Plex Mono', monospace;}
+  .footer-links a{ display:block; text-decoration:none; color:rgba(246,241,230,0.65); font-size:0.88rem; margin-bottom:9px; }
+  .footer-links a:hover{ color:var(--paper); }
+  .footer-bottom{ padding-top:26px; font-size:0.78rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; }
+  .disclaimer{
+    max-width:1180px; margin:0 auto 30px; padding:0 32px;
+    font-size:0.76rem; color:rgba(246,241,230,0.42); line-height:1.7; max-width:900px;
+  }
+
+  /* reveal animation */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  @media (max-width:980px){
+    .hero-inner{ grid-template-columns:1fr; }
+    .estate-grid{ grid-template-columns:1fr; }
+    .letter-grid{ grid-template-columns:1fr; }
+  }
+  @media (max-width:640px){
+    .section-pad{ padding:76px 0; }
+    .coa-strip{ grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brandmark" href="#top">
+      <svg viewBox="0 0 100 100" fill="none"><path d="M50 8C50 8 22 42 22 62a28 28 0 0056 0C78 42 50 8 50 8z" stroke="#1F3A2E" stroke-width="4"/><path d="M50 30C45 42 40 50 40 62a10 10 0 0020 0c0-12-5-20-10-32z" fill="#B8863B"/></svg>
+      <span>Motra</span>
+    </a>
+    <nav class="links nav-mobile-hide">
+      <a href="#estate">The Estate</a>
+      <a href="#founder">Founder</a>
+      <a href="#herbarium">The Herbarium</a>
+      <a href="#process">Process</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#markets">Wholesale &amp; Retail</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Enquire</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Đồng Nai, Vietnam — Farm to Flask</div>
+        <h1>Essential oils and<br>botanical extracts,<br><em>grown before they're made.</em></h1>
+        <p class="lede">Motra is a family-run herbal estate in South Vietnam, cultivating and extracting Niaouli, tea tree, Fang Ji root, and a wider field of botanicals — for formulators and households who want to know exactly where a bottle began.</p>
+        <div class="hero-actions">
+          <a href="#markets" class="btn btn-brass">Request Wholesale Catalogue</a>
+          <a href="#herbarium" class="btn btn-ghost">Explore the Herbarium</a>
+        </div>
+      </div>
+      <div>
+        <div class="hero-frame">
+          <img src="motra_logo.jpg" alt="Motra — Essential Oils from Farm, brand mark on paper">
+          <div class="cap">Motra · Essential Oils from Farm</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-ribbon">
+      <div class="item"><b>Organic</b> Certified cultivation</div>
+      <div class="item"><b>Halal</b> Certified processing</div>
+      <div class="item"><b>COA</b> Benchmarked to EU &amp; US thresholds</div>
+      <div class="item"><b>Solar-assisted</b> low-chemical extraction</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE ESTATE ============ -->
+<section class="section-pad estate" id="estate">
+  <div class="wrap">
+    <div class="estate-grid">
+      <div class="reveal">
+        <div class="eyebrow">The Estate</div>
+        <h2 class="section-head" style="margin-bottom:26px;">A working farm before it is a brand</h2>
+        <div class="estate-copy">
+          <p class="drop">Motra sits in the tropical lowlands of Đồng Nai, in South Vietnam, where warm, humid air and mineral-rich groundwater have long favoured the plants we grow. Our fields carry five-vein Niaouli and tea tree stands, Fang Ji root, chilli, papaya, passion fruit and pumpkin, and a young grove of banana grown specifically for its unripe, starch-rich fruit.</p>
+          <p>We fertilise with organic liquid feed made on the estate, irrigate from our own protected groundwater, and keep chemical inputs out of the fields entirely — because an extract can only be as clean as the plant it came from.</p>
+          <p>What leaves our gate is sold two ways: in bulk, to formulators building cosmetic, wellness and food products in Vietnam and abroad, and in finished retail bottles, for households who prefer to know the farm behind the label.</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="ledger">
+          <div class="ledger-row"><span class="lbl">Region</span><span class="val">Đồng Nai, South Vietnam</span></div>
+          <div class="ledger-row"><span class="lbl">Cultivated species</span><span class="val">12+ botanicals</span></div>
+          <div class="ledger-row"><span class="lbl">Water source</span><span class="val">Protected groundwater</span></div>
+          <div class="ledger-row"><span class="lbl">Fertiliser</span><span class="val">Organic liquid, farm-made</span></div>
+          <div class="ledger-row"><span class="lbl">Energy</span><span class="val">Local + solar-assisted</span></div>
+          <div class="ledger-row"><span class="lbl">Workforce</span><span class="val">Semi-tech &amp; traditional labour</span></div>
+          <div class="ledger-row"><span class="lbl">Markets served</span><span class="val">Domestic &amp; export</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<!-- ============ FOUNDER LETTER ============ -->
+<section class="section-pad letter-section" id="founder">
+  <div class="wrap">
+    <div class="letter-grid">
+      <div class="reveal">
+        <div class="monogram">MC</div>
+        <div class="letter-meta">
+          <b>Dr. Morgan Carroll</b>
+          Founder, Motra<br>
+          Formerly Director of ESG,<br>Vingroup &amp; VinFast<br>
+          Ph.D., Business
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="eyebrow">A Letter From the Founder</div>
+        <div class="letter-body" style="margin-top:22px;">
+          <p>Before Motra, I spent years building sustainability strategy for one of Vietnam's largest conglomerates — work that taught me how much good intention can be lost in scale, and how rarely a supply chain still knows the ground it started on.</p>
+          <p>I started Motra because I wanted to go the other way: small enough to keep a hand on every hectare, transparent enough that a buyer in Paris or Portland can trace a batch back to the field it was grown in. We lean on semi-technical methods — solar-assisted distillation, measured irrigation — for the work that benefits from precision, and we keep traditional, hands-on labour for the arduous work that a community still does better than a machine. Both matter to how we think about social upliftment here: technology in service of people, not instead of them.</p>
+          <p>We believe natural, well-verified botanicals deserve a first, serious look in daily wellbeing routines — alongside, never instead of, proper medical care. That belief shapes everything we grow and how carefully we test it before it ever leaves the estate.</p>
+        </div>
+        <div class="sign-off">Morgan Carroll<small>Founder &amp; Director, Motra Farm &amp; Extraction House</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HERBARIUM ============ -->
+<section class="section-pad herbarium" id="herbarium">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Herbarium</div>
+      <h2>Eight botanicals, one soil</h2>
+      <p>Each extract is grown, harvested and processed on the estate, then verified against its own certificate of analysis before it is offered in bulk or bottle.</p>
+    </div>
+
+    <div class="specimen-grid reveal">
+
+      <div class="specimen">
+        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 4C20 4 8 18 8 26a12 12 0 0024 0C32 18 20 4 20 4z"/><path d="M20 4v30" stroke-dasharray="2 2"/></svg></div>
+        <div class="part">Leaf · Steam Distilled</div>
+        <h3>Niaouli Oil</h3>
+        <div class="latin">Melaleuca quinquenervia — five-vein</div>
+        <p>Distilled from our five-vein Niaouli stands, prized for its clean, camphorous profile and gentler cousin-relationship to tea tree. A purifying staple for cosmetic and personal-care formulation.</p>
+        <div class="tag">Wholesale &amp; retail</div>
+      </div>
+
+      <div class="specimen">
+        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 4C20 4 8 18 8 26a12 12 0 0024 0C32 18 20 4 20 4z"/><circle cx="20" cy="24" r="4" fill="currentColor" stroke="none"/></svg></div>
+        <div class="part">Leaf · Steam Distilled</div>
+        <h3>Tea Tree Oil</h3>
+        <div class="latin">Melaleuca alternifolia</div>
+        <p>Grown alongside our Niaouli under the same organic feeding and pure groundwater irrigation, giving a consistently high active-compound profile batch to batch.</p>
+        <div class="tag">Wholesale &amp; retail</div>
+      </div>
+
+      <div class="specimen">
+        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 8v10M20 18c-6 2-9 8-9 16M20 18c6 2 9 8 9 16M20 18c-3 4-4 9-3 16M20 18c3 4 4 9 3 16" stroke-linecap="round"/></svg></div>
+        <div class="part">Root · Extracted</div>
+        <h3>Fang Ji Root Extract</h3>
+        <div class="latin">Stephania tetrandra</div>
+        <p>A traditional root extract supplied to formulators with species verification at harvest and on the certificate of analysis — a safeguard against the historic mix-up between Stephania and unrelated Aristolochia roots.</p>
+        <div class="tag verify">Species-verified · Wholesale, formulators only</div>
+      </div>
+
+      <div class="specimen">
+        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 30c-6-4-8-12-4-18 6-2 12 2 14 8M14 30c2 4 6 6 10 4M14 30l16-16"/></svg></div>
+        <div class="part">Fruit · Green-Harvested</div>
+        <h3>Green Banana Resistant Starch</h3>
+        <div class="latin">Musa spp. — unripe fruit</div>
+        <p>Milled from our own unripe organic bananas, harvested green specifically to concentrate resistant starch — a prebiotic-fibre ingredient for food, beverage and nutraceutical formulators.</p>
+        <div class="tag">Wholesale, bulk only</div>
+      </div>
+
+      <div class="specimen">
+        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="20" cy="20" rx="14" ry="9" transform="rotate(-25 20 20)"/><circle cx="20" cy="20" r="2" fill="currentColor" stroke="none"/><circle cx="15" cy="17" r="1.4" fill="currentColor" stroke="none"/><circle cx="25" cy="23" r="1.4" fill="currentColor" stroke="none"/></svg></div>
+        <div class="part">Seed · Cold Extracted</div>
+        <h3>Pumpkin Seed Extract</h3>
+        <div class="latin">Cucurbita pepo</div>
+        <p>Extracted from field-grown pumpkin seed, valued by formulators for hair, scalp and skin-care lines seeking a nutrient-dense plant actives base.</p>
+        <div class="tag">Wholesale &amp; retail</div>
+      </div>
+
+      <div class="specimen">
+        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="20" cy="20" r="12"/><path d="M20 8v24M8 20h24M11 11l18 18M29 11L11 29" stroke-width="1"/></svg></div>
+        <div class="part">Fruit &amp; Seed · Extracted</div>
+        <h3>Passion Fruit Extract</h3>
+        <div class="latin">Passiflora edulis — chanh leo</div>
+        <p>Pulp and seed extract from vine-ripened passion fruit, carrying a bright, antioxidant-rich profile suited to skincare and beverage applications.</p>
+        <div class="tag">Wholesale &amp; retail</div>
+      </div>
+
+      <div class="specimen">
+        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6c-6 4-10 12-10 18a10 10 0 0020 0c0-6-4-14-10-18z"/><path d="M20 12c-3 3-5 8-5 12" stroke-width="1"/></svg></div>
+        <div class="part">Fruit · Extracted</div>
+        <h3>Chilli Extract</h3>
+        <div class="latin">Capsicum spp.</div>
+        <p>A capsaicin-rich extract from estate-grown chilli, supplied for warming body-care and circulation-support topical formulations.</p>
+        <div class="tag">Wholesale, bulk only</div>
+      </div>
+
+      <div class="specimen">
+        <div class="icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="20" cy="20" rx="10" ry="15"/><circle cx="16" cy="16" r="1.2" fill="currentColor" stroke="none"/><circle cx="22" cy="14" r="1.2" fill="currentColor" stroke="none"/><circle cx="19" cy="22" r="1.2" fill="currentColor" stroke="none"/><circle cx="24" cy="24" r="1.2" fill="currentColor" stroke="none"/></svg></div>
+        <div class="part">Fruit · Enzyme Extracted</div>
+        <h3>Papaya Extract</h3>
+        <div class="latin">Carica papaya — đu đủ</div>
+        <p>Papain-rich extract from farm-grown papaya, used by formulators as a gentle, naturally derived exfoliating ingredient in skincare.</p>
+        <div class="tag">Wholesale &amp; retail</div>
+      </div>
+
+    </div>
+
+    <div class="herb-note reveal">Additional field crops are grown on rotation for seasonal bulk supply; ask our trade desk for the current planting list and available volumes.</div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section-pad process" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">How We Work</div>
+      <h2>Two hands, one still turning by hand</h2>
+      <p>We use measured technology where it improves consistency, and keep traditional method where it protects livelihoods.</p>
+    </div>
+    <div class="process-grid reveal">
+      <div class="process-col">
+        <div class="kicker">Semi-Tech</div>
+        <h3>Where precision earns its keep</h3>
+        <p>Distillation and extraction runs are monitored for temperature and timing consistency, drawing on local grid power supplemented with solar, so batches stay stable without heavy chemical intervention.</p>
+        <ul>
+          <li>Solar-assisted distillation and drying</li>
+          <li>Low, controlled chemical inputs</li>
+          <li>Batch-level COA testing before release</li>
+        </ul>
+      </div>
+      <div class="process-col">
+        <div class="kicker">Traditional</div>
+        <h3>Where hands still do it best</h3>
+        <p>Harvesting, sorting and hand-selection remain manual — arduous work carried out by the local workforce, whose experience with these plants is not easily replaced by machinery.</p>
+        <ul>
+          <li>Hand-harvested leaf, root and fruit</li>
+          <li>Community labour, fair local employment</li>
+          <li>Traditional post-harvest handling</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CERTIFICATIONS ============ -->
+<section class="section-pad certs" id="certifications">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Certifications</div>
+      <h2>Verified at the source, not just on the label</h2>
+      <p>Every batch is tested and documented before it leaves the estate, with certification and analysis built to travel across borders.</p>
+    </div>
+
+    <div class="seal-row reveal">
+      <div class="seal">
+        <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="#D6AC66" stroke-width="1.6"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.4l-4.8 2.5.9-5.4L4.2 8.7l5.4-.8L12 3z"/></svg></div>
+        <h4>Organic Certified</h4>
+        <p>Cultivation and processing certified organic, from soil input to finished extract.</p>
+      </div>
+      <div class="seal">
+        <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="#D6AC66" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4z"/></svg></div>
+        <h4>Halal Certified</h4>
+        <p>Processes and facilities certified Halal, audited across the extraction chain.</p>
+      </div>
+      <div class="seal">
+        <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="#D6AC66" stroke-width="1.6"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 13h6M9 16h4"/></svg></div>
+        <h4>Certificate of Analysis</h4>
+        <p>Per-batch COA panels benchmarked to align with EU and US analytical thresholds.</p>
+      </div>
+    </div>
+
+    <div class="coa-strip reveal">
+      <div class="cell"><div class="k">Batch Ref</div><div class="v">MT-24-0847</div></div>
+      <div class="cell"><div class="k">Species</div><div class="v">Verified, DNA-checked</div></div>
+      <div class="cell"><div class="k">Microbial</div><div class="v">Pass</div></div>
+      <div class="cell"><div class="k">Heavy Metals</div><div class="v">Within EU / US limits</div></div>
+    </div>
+    <div class="coa-cap">Illustrative sample panel — full, current-batch COAs are issued on request with every wholesale order.</div>
+  </div>
+</section>
+
+<!-- ============ MARKETS ============ -->
+<section class="section-pad markets" id="markets">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Two Ways to Buy</div>
+      <h2>Wholesale for formulators, retail for households</h2>
+    </div>
+    <div class="market-grid reveal">
+      <div class="market-card">
+        <div class="eyebrow">For Business</div>
+        <h3>Bulk &amp; Export</h3>
+        <p>Drums and totes of Niaouli, tea tree, Fang Ji root and specialty extracts, with full COA documentation, for cosmetic, food, nutraceutical and pharmaceutical formulators — domestic and export.</p>
+        <a href="#contact" class="btn btn-brass">Request Wholesale Pricing</a>
+      </div>
+      <div class="market-card alt">
+        <div class="eyebrow">For Home</div>
+        <h3>Retail Collection</h3>
+        <p>Bottled oils and extracts for households who want the same farm-verified quality our formulator clients rely on, sized and labelled for everyday use.</p>
+        <a href="#contact" class="btn btn-brass">Browse Retail Catalogue</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section-pad contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="eyebrow">Get in Touch</div>
+        <h2 class="section-head" style="margin-bottom:30px;">Visit the estate, or start with a sample</h2>
+        <div class="contact-info">
+          <div class="row"><div class="k">Location</div><div class="v">Đồng Nai Province, South Vietnam</div></div>
+          <div class="row"><div class="k">Trade Desk</div><div class="v">wholesale@motra.vn</div></div>
+          <div class="row"><div class="k">Retail</div><div class="v">hello@motra.vn</div></div>
+          <div class="row"><div class="k">Farm Visits</div><div class="v">By appointment, Mon–Sat</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <form onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent='Message received';">
+          <div class="field-row">
+            <div><label for="name">Name</label><input id="name" type="text" required></div>
+            <div><label for="company">Company (optional)</label><input id="company" type="text"></div>
+          </div>
+          <div class="field-row">
+            <div><label for="email">Email</label><input id="email" type="email" required></div>
+            <div>
+              <label for="interest">Enquiry Type</label>
+              <select id="interest">
+                <option>Wholesale / bulk pricing</option>
+                <option>Retail order</option>
+                <option>Export &amp; distribution</option>
+                <option>Farm visit</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div><label for="msg">Message</label><textarea id="msg" placeholder="Tell us which botanicals and volumes you're interested in..."></textarea></div>
+          <button class="submit-btn" type="submit">Send Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <svg viewBox="0 0 100 100" fill="none"><path d="M50 8C50 8 22 42 22 62a28 28 0 0056 0C78 42 50 8 50 8z" stroke="#D6AC66" stroke-width="4"/></svg>
+        <span>Motra</span>
+      </div>
+      <div class="footer-links">
+        <div>
+          <b>Explore</b>
+          <a href="#estate">The Estate</a>
+          <a href="#founder">Founder</a>
+          <a href="#herbarium">The Herbarium</a>
+        </div>
+        <div>
+          <b>Business</b>
+          <a href="#markets">Wholesale</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div>
+          <b>Estate</b>
+          <a href="#">Đồng Nai Province, Vietnam</a>
+          <a href="#">wholesale@motra.vn</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Motra Farm &amp; Extraction House. All rights reserved.</span>
+      <span>Grown in Đồng Nai, South Vietnam.</span>
+    </div>
+  </div>
+  <div class="disclaimer">Motra's oils and extracts are natural cosmetic, personal-care, food and formulation ingredients. They are not intended to diagnose, treat, cure or prevent any disease, and are not a substitute for advice or care from a qualified healthcare professional. Certification claims and analytical data are available on request per batch.</div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
