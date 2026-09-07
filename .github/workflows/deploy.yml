@@ -23,6 +23,9 @@ jobs:
           script: |
             echo "Starting deployment..."
             
+            # Load PATH để SSH session nhận diện được git, php, composer
+            export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/cpanel/3rdparty/bin:$HOME/bin
+            
             # 1. Di chuyển vào thư mục dự án trên VPS
             cd /home/motra/public_html
             
