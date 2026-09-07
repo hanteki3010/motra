@@ -1,0 +1,42 @@
+name: Deploy Laravel to VPS
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  deploy:
+    name: Deploy to VPS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Execute remote SSH commands to deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script_stop: true
+          script: |
+            echo "Starting deployment..."
+            
+            # 1. Di chuyển vào thư mục dự án trên VPS
+            cd /home/motra/public_html
+            
+            # 3. Kéo mã nguồn mới nhất từ GitHub
+            git pull https://github.com/hanteki3010/motra.git main
+            
+            # 6. Chạy Database Migration (--force bắt buộc trên production)
+            php artisan migrate --force
+            
+            # 7. Xóa và tối ưu hóa Cache của Laravel
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+            php artisan event:cache || true
+            php artisan optimize
+            
+            echo "Deployment completed successfully!"

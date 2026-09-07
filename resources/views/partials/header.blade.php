@@ -16,6 +16,7 @@
     </nav>
     
     <div class="nav-actions">
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
       <!-- Google Translate Custom Language Dropdown -->
       <div class="lang-switcher">
         <button type="button" class="lang-btn" id="currentLangBtn" title="Select Language / Chuyển đổi ngôn ngữ">
