@@ -23,14 +23,29 @@ jobs:
           script: |
             echo "Starting deployment..."
             
-            # Load PATH để SSH session nhận diện được git, php, composer
-            export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/cpanel/3rdparty/bin:$HOME/bin
+            # Load các đường dẫn PATH phổ biến trên Linux / cPanel / DirectAdmin
+            export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/cpanel/3rdparty/bin:$HOME/bin:$HOME/local/bin
+            
+            # Tự động tìm vị trí file thực thi git trên VPS
+            GIT_CMD=$(which git 2>/dev/null || find /usr /opt /usr/local /home /var -name "git" -type f -executable 2>/dev/null | head -n 1)
+            
+            if [ -z "$GIT_CMD" ]; then
+              echo "=========================================================="
+              echo "LỖI: Máy chủ VPS của bạn chưa được cài đặt Git!"
+              echo "Vui lòng SSH vào VPS và cài đặt git bằng lệnh:"
+              echo "  - Ubuntu/Debian: sudo apt update && sudo apt install git"
+              echo "  - CentOS/RHEL/AlmaLinux: sudo yum install git"
+              echo "=========================================================="
+              exit 1
+            fi
+            
+            echo "Đã tìm thấy Git tại: $GIT_CMD"
             
             # 1. Di chuyển vào thư mục dự án trên VPS
             cd /home/motra/public_html
             
             # 3. Kéo mã nguồn mới nhất từ GitHub
-            git pull https://github.com/hanteki3010/motra.git main
+            $GIT_CMD pull https://github.com/hanteki3010/motra.git main
             
             # 6. Chạy Database Migration (--force bắt buộc trên production)
             php artisan migrate --force
